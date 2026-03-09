@@ -1,0 +1,15 @@
+body {font-family: sans-serif; background-color: #f4f4f4;}
+
+.contenu {max-width: 500px; margin: 0 auto; background: white; padding: 20px;}
+
+#formulaire-tache {margin-bottom: 20px;}
+
+.champ-texte {width: 70%; padding: 8px;}
+
+.bouton-bleu { background-color: #28a745; color: white; padding: 8px; cursor: pointer;}
+
+.tache-item { background-color: #fff; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;}
+
+.tache-terminee {text-decoration: line-through; color: gray; background-color: #f9f9f9;}
+
+.texte-rouge {color: red;}

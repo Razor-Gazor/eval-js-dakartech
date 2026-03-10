@@ -1,72 +1,72 @@
-let taches= [];
+let taches = [];
 
-const formulaire= document.getElementById('formulaire-tache');
-const entreeUtilisateur= document.getElementById('entree-utilisateur');
-const zoneErreur= document.getElementById('zone-erreur');
-formulaire.addEventListener('submit', function(event){
-    event.preventDefault();
-    
-    const texteTache= entreeUtilisateur.value.trim();
+const formulaire = document.getElementById("formulaire-tache");
+const entreeUtilisateur = document.getElementById("entree-utilisateur");
+const zoneErreur = document.getElementById("zone-erreur");
+formulaire.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    if (texteTache === ""){
-        zoneErreur.textContent = "Veuillez saisir une tâche.";
-        return;
-    }
+  const texteTache = entreeUtilisateur.value.trim();
 
-    zoneErreur.textContent= "";
+  if (texteTache === "") {
+    zoneErreur.textContent = "Veuillez saisir une tâche.";
+    return;
+  }
 
-    const nouvelleTache={
-        texte: texteTache,
-        terminee: false
-    };
-    
-    taches.push(nouvelleTache);
-    afficherTaches();
+  zoneErreur.textContent = "";
 
-    entreeUtilisateur.value= "";
+  const nouvelleTache = {
+    texte: texteTache,
+    terminee: false,
+  };
 
-    console.log(taches);
+  taches.push(nouvelleTache);
+  afficherTaches();
+
+  entreeUtilisateur.value = "";
+
+  console.log(taches);
 });
 
 function afficherTaches() {
-    const liste= document.getElementById('liste-taches');
-    const compteur= document.getElementById('compteur-taches');
-    
-    liste.innerHTML= "";
-    let nbEnCours= 0;
+  const liste = document.getElementById("liste-taches");
+  const compteur = document.getElementById("compteur-taches");
 
-    taches.forEach(function(tache, index) {
-        const li= document.createElement('li');
-        li.className = "tache-item";
-        
-        if (tache.terminee) {
-            li.classList.add('tache-terminee');
-        } else {
-            nbEnCours++;
-        }
+  liste.innerHTML = "";
+  let nbEnCours = 0;
 
-        const spanTexte= document.createElement('span');
-        spanTexte.textContent= tache.texte;
-        li.appendChild(spanTexte);
+  taches.forEach(function (tache, index) {
+    const li = document.createElement("li");
+    li.className = "tache-item";
 
-        const boutonFait= document.createElement('button');
-        boutonFait.textContent= "Terminé";
-        boutonFait.addEventListener('click', function() {
-            taches[index].terminee= !taches[index].terminee;
-            afficherTaches();
-        });
-        li.appendChild(boutonFait);
+    if (tache.terminee) {
+      li.classList.add("tache-terminee");
+    } else {
+      nbEnCours++;
+    }
 
-        const boutonSuppr= document.createElement('button');
-        boutonSuppr.textContent= "Supprimer";
-        boutonSuppr.addEventListener('click', function() {
-            taches.splice(index, 1);
-            afficherTaches();
-        });
-        li.appendChild(boutonSuppr);
+    const spanTexte = document.createElement("span");
+    spanTexte.textContent = tache.texte;
+    li.appendChild(spanTexte);
 
-        liste.appendChild(li);
+    const boutonFait = document.createElement("button");
+    boutonFait.textContent = "Terminé";
+    boutonFait.addEventListener("click", function () {
+      taches[index].terminee = !taches[index].terminee;
+      afficherTaches();
     });
+    li.appendChild(boutonFait);
 
-    compteur.textContent= nbEnCours;
-};
+    const boutonSuppr = document.createElement("button");
+    boutonSuppr.textContent = "Supprimer";
+    boutonSuppr.addEventListener("click", function () {
+      taches.splice(index, 1);
+      afficherTaches();
+    });
+    li.appendChild(boutonSuppr);
+
+    liste.appendChild(li);
+  });
+
+  compteur.textContent = nbEnCours;
+}

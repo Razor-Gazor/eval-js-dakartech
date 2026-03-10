@@ -1,25 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>examen js</title>
-</head>
-<body>
-    <h1>
-        La todo-list de Razor Gazor
-    </h1>
-<form id="formulaire-tache">
-  <input type="text" id="entree-utilisateur" class="champ-texte">
-  <button type="submit" id="bouton-ajouter" class="bouton-bleu">Ajouter</button>
-  
-  <p id="zone-erreur" class="texte-rouge"></p>
-</form>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="contenu">
+      <h1>La todo-list de Razor Gazor</h1>
+      <form id="formulaire-tache">
+        <input type="text" id="entree-utilisateur" class="champ-texte" />
+        <button type="submit" id="bouton-ajouter" class="bouton-bleu">
+          Ajouter
+        </button>
 
-<div class="compteur">
-  <span id="compteur-taches">0</span> tâche(s) en cours
-</div>
+        <p id="zone-erreur" class="texte-rouge"></p>
+      </form>
 
-<ul id="liste-taches"></ul>
-</body>
+      <div class="compteur">
+        <span id="compteur-taches">0</span> tâche(s) en cours
+      </div>
+      <ul id="liste-taches"></ul>
+      <script src="script.js"></script>
+    </div>
+  </body>
 </html>

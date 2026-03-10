@@ -28,30 +28,45 @@ formulaire.addEventListener('submit', function(event){
     console.log(taches);
 });
 
-function afficherTaches(){
-    const liste = document.getElementById('liste-taches');
-    const compteur = document.getElementById('compteur-taches');
+function afficherTaches() {
+    const liste= document.getElementById('liste-taches');
+    const compteur= document.getElementById('compteur-taches');
     
-    liste.innerHTML = "";
-    
-    let nbEnCours = 0;
+    liste.innerHTML= "";
+    let nbEnCours= 0;
 
     taches.forEach(function(tache, index) {
-        const li = document.createElement('li');
+        const li= document.createElement('li');
         li.className = "tache-item";
         
-        if (tache.terminee){
+        if (tache.terminee) {
             li.classList.add('tache-terminee');
-        } 
-        
-        else {
-            nbEnCours++; 
+        } else {
+            nbEnCours++;
         }
 
-        li.innerHTML = tache.texte + 
-            ' <button>Terminé</button>' + 
-            ' <button>Supprimer</button>';
+        const spanTexte= document.createElement('span');
+        spanTexte.textContent= tache.texte;
+        li.appendChild(spanTexte);
+
+        const boutonFait= document.createElement('button');
+        boutonFait.textContent= "Terminé";
+        boutonFait.addEventListener('click', function() {
+            taches[index].terminee= !taches[index].terminee;
+            afficherTaches();
+        });
+        li.appendChild(boutonFait);
+
+        const boutonSuppr= document.createElement('button');
+        boutonSuppr.textContent= "Supprimer";
+        boutonSuppr.addEventListener('click', function() {
+            taches.splice(index, 1);
+            afficherTaches();
+        });
+        li.appendChild(boutonSuppr);
+
         liste.appendChild(li);
     });
-    compteur.textContent = nbEnCours;
-}
+
+    compteur.textContent= nbEnCours;
+};
